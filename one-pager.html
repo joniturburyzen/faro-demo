@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FARO - One-Pager Ejecutivo para Inversores</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f766e; /* Deep Elegant Teal */
+            --primary-light: #f0fdfa;
+            --primary-dark: #115e59;
+            --dark: #0f172a;
+            --dark-light: #1e293b;
+            --text-dark: #0f172a;
+            --text-light: #334155;
+            --text-muted: #64748b;
+            --bg-light: #f8fafc;
+            --border: #e2e8f0;
+            --font-title: 'Outfit', sans-serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-dark);
+            background-color: #f1f5f9;
+            line-height: 1.35;
+            font-size: 9.5px;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        /* Container designed to fit on exactly one page of A4 */
+        .onepager-container {
+            max-width: 960px;
+            margin: 15px auto;
+            padding: 24px 30px;
+            background-color: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 15px 35px rgba(15, 23, 42, 0.05);
+            min-height: 290mm; /* Target A4 height */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Header Style */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 12px;
+            margin-bottom: 12px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: var(--font-title);
+            font-weight: 800;
+            font-size: 22px;
+            box-shadow: 0 4px 10px rgba(15, 118, 110, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo-text {
+            font-family: var(--font-title);
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--dark);
+            letter-spacing: -0.5px;
+            line-height: 1;
+        }
+
+        .logo-text span {
+            color: var(--primary);
+        }
+
+        .header-tagline {
+            text-align: right;
+        }
+
+        .header-tagline h1 {
+            font-family: var(--font-title);
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--dark);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            line-height: 1.2;
+        }
+
+        .header-tagline p {
+            font-size: 9.5px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* Concept section */
+        .concept-bar {
+            background-color: var(--primary-light);
+            border-left: 4px solid var(--primary);
+            padding: 10px 14px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 12px;
+            font-size: 10px;
+            text-align: justify;
+            color: var(--text-light);
+            line-height: 1.4;
+        }
+
+        .concept-bar strong {
+            color: var(--primary-dark);
+            font-weight: 700;
+        }
+
+        /* Grid Layout */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1.8fr 1.2fr;
+            gap: 14px;
+            margin-bottom: 12px;
+        }
+
+        .left-column, .right-column {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        /* Card panels */
+        .panel {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 12px 14px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.01);
+        }
+
+        .panel-title {
+            font-family: var(--font-title);
+            font-size: 10.5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--dark);
+            margin-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .panel-title svg {
+            color: var(--primary);
+            flex-shrink: 0;
+            width: 14px;
+            height: 14px;
+        }
+
+        /* KPI Grid */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+
+        .kpi-card {
+            background-color: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px 4px;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+
+        .kpi-card:hover {
+            border-color: var(--primary);
+            background-color: var(--primary-light);
+        }
+
+        .kpi-value {
+            font-family: var(--font-title);
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin-bottom: 2px;
+        }
+
+        .kpi-label {
+            font-size: 8.5px;
+            color: var(--text-dark);
+            font-weight: 700;
+        }
+
+        .kpi-desc {
+            font-size: 8px;
+            color: var(--text-muted);
+            margin-top: 2px;
+            line-height: 1.2;
+        }
+
+        /* Real Business Model Canvas Layout */
+        .canvas-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: auto auto auto;
+            gap: 6px;
+            background-color: #f1f5f9;
+            padding: 6px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .canvas-cell {
+            background-color: #ffffff;
+            padding: 8px;
+            border-radius: 6px;
+            font-size: 8px;
+            border: 1px solid rgba(0,0,0,0.03);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.01);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .canvas-cell-title {
+            font-size: 8px;
+            font-weight: 800;
+            color: var(--primary-dark);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            border-bottom: 1px solid var(--primary-light);
+            padding-bottom: 3px;
+            letter-spacing: 0.3px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .canvas-cell-title svg {
+            width: 10px;
+            height: 10px;
+            color: var(--primary);
+        }
+
+        .canvas-cell ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .canvas-cell li {
+            margin-bottom: 3px;
+            padding-left: 7px;
+            position: relative;
+            line-height: 1.3;
+            color: var(--text-light);
+        }
+
+        .canvas-cell li::before {
+            content: "•";
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* Canvas Grid Placements */
+        .c-partners { grid-column: 1; grid-row: 1 / span 2; }
+        .c-activities { grid-column: 2; grid-row: 1; }
+        .c-resources { grid-column: 2; grid-row: 2; }
+        .c-propositions { grid-column: 3; grid-row: 1 / span 2; }
+        .c-relationships { grid-column: 4; grid-row: 1; }
+        .c-channels { grid-column: 4; grid-row: 2; }
+        .c-segments { grid-column: 5; grid-row: 1 / span 2; }
+        .c-costs { grid-column: 1 / span 2.5; grid-row: 3; }
+        .c-revenues { grid-column: 3 / span 3; grid-row: 3; }
+
+        /* DAFO Grid Layout */
+        .dafo-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .dafo-box {
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 8.5px;
+            border: 1px solid transparent;
+        }
+
+        .dafo-box ul {
+            list-style: none;
+        }
+
+        .dafo-box li {
+            margin-bottom: 3px;
+            position: relative;
+            padding-left: 8px;
+            line-height: 1.35;
+        }
+
+        .dafo-box li::before {
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .dafo-f { background-color: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; }
+        .dafo-f li::before { content: "+"; color: #22c55e; }
+        
+        .dafo-d { background-color: #fef2f2; border: 1px solid #fecaca; color: #991b1b; }
+        .dafo-d li::before { content: "-"; color: #ef4444; }
+        
+        .dafo-o { background-color: #eff6ff; border: 1px solid #bfdbfe; color: #1e40af; }
+        .dafo-o li::before { content: "★"; color: #3b82f6; font-size: 7px; top: 1px; }
+        
+        .dafo-a { background-color: #fffbeb; border: 1px solid #fef3c7; color: #92400e; }
+        .dafo-a li::before { content: "⚠"; color: #f59e0b; font-size: 8px; }
+
+        .dafo-title {
+            font-weight: 800;
+            font-size: 8.5px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            letter-spacing: 0.3px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Roadmap timeline */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .timeline-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            background-color: var(--bg-light);
+            padding: 8px 10px;
+            border-radius: 8px;
+            border-left: 3px solid var(--primary);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            border-right: 1px solid var(--border);
+        }
+
+        .step-num {
+            font-family: var(--font-title);
+            font-size: 9.5px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            white-space: nowrap;
+            width: 65px;
+        }
+
+        .step-num span {
+            background-color: var(--primary-light);
+            padding: 1px 4px;
+            border-radius: 3px;
+            font-size: 7.5px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .step-desc {
+            font-size: 8px;
+            color: var(--text-light);
+            line-height: 1.35;
+        }
+
+        /* Bottom Action Bar */
+        .footer-action {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--dark);
+            color: white;
+            padding: 12px 18px;
+            border-radius: 12px;
+            margin-top: 4px;
+            box-shadow: 0 4px 15px rgba(15, 23, 42, 0.15);
+        }
+
+        .footer-text h3 {
+            font-family: var(--font-title);
+            font-size: 11px;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .footer-text p {
+            font-size: 8px;
+            color: var(--text-secondary);
+            margin-top: 1px;
+        }
+
+        .print-control {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 9px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 6px rgba(13, 148, 136, 0.2);
+        }
+
+        .print-control:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        /* Printing adjustments to target exactly one page of A4 */
+        @media print {
+            @page {
+                size: A4 portrait;
+                margin: 8mm 10mm;
+            }
+            body {
+                background-color: #ffffff;
+                color: #000000;
+                font-size: 8.5px;
+            }
+            .onepager-container {
+                padding: 0;
+                margin: 0;
+                max-width: 100%;
+                min-height: auto;
+                box-shadow: none;
+                border-radius: 0;
+            }
+            .print-control {
+                display: none;
+            }
+            .panel {
+                border-color: #94a3b8;
+                page-break-inside: avoid;
+                box-shadow: none;
+                padding: 10px 12px;
+            }
+            .canvas-grid {
+                background-color: #f8fafc;
+                border-color: #cbd5e1;
+            }
+            .canvas-cell {
+                border-color: #cbd5e1;
+            }
+            .kpi-card {
+                border-color: #cbd5e1;
+            }
+            .footer-action {
+                border: 1px solid #000000;
+                background-color: #f8fafc;
+                color: #000000 !important;
+                box-shadow: none;
+                padding: 10px 14px;
+            }
+            .footer-action h3 {
+                color: #000000 !important;
+            }
+            .footer-action p {
+                color: #334155 !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="onepager-container">
+        
+        <!-- HEADER -->
+        <div class="header">
+            <div class="logo-area">
+                <div class="logo-icon">F</div>
+                <div class="logo-text">FARO<span>.</span></div>
+            </div>
+            <div class="header-tagline">
+                <h1>Fórmula de Análisis y Revenue Operativo</h1>
+                <p>Resumen Ejecutivo para Inversores · TFM Jon Iturburuaga Cano</p>
+            </div>
+        </div>
+
+        <!-- CONCEPT BAR -->
+        <div class="concept-bar">
+            <strong>FARO</strong> es un unificador modular SaaS B2B que centraliza e integra los datos del PMS, TPV, CRM y Channel Manager de cadenas hoteleras medianas (3 a 10 propiedades) de forma automatizada. Mediante modelos avanzados de Inteligencia Artificial en la nube, el sistema predice la demanda de restauración (reduciendo merma un 12%), optimiza cuadrantes de personal y anticipa la ocupación hotelera global, permitiendo consultas rápidas mediante un asistente de chat en lenguaje natural (Nemotron Ultra 550b).
+        </div>
+
+        <!-- MAIN LAYOUT -->
+        <div class="main-grid">
+            
+            <!-- LEFT COLUMN -->
+            <div class="left-column">
+                
+                <!-- MODELO CANVAS -->
+                <div class="panel">
+                    <div class="panel-title">
+                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path></svg>
+                        Business Model CANVAS - FARO SaaS
+                    </div>
+                    <div class="canvas-grid">
+                        
+                        <div class="canvas-cell c-partners">
+                            <div class="canvas-cell-title">
+                                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                                Alianzas Clave
+                            </div>
+                            <ul>
+                                <li>Partnerships estratégicos con PMS líderes (Mews, Opera, Cloudbeds, Protel) para homologación de APIs.</li>
+                                <li>Asociaciones con consultoras de Revenue Management y asesorías de costes F&B.</li>
+                                <li>Integradores de sistemas TPV y hardware de restauración (Micros, Tevalis, Ágora).</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="canvas-cell c-activities">
+                            <div class="canvas-cell-title">
+                                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
+                                Actividades
+                            </div>
+                            <ul>
+                                <li>Ingeniería de datos para la sincronización bidireccional y pipelines ETL eficientes.</li>
+                                <li>Entrenamiento y ajuste continuo del modelo híbrido de Machine Learning (Nemotron/Gemini).</li>
+                                <li>Implementación ágil en el cliente (onboarding en 30 días) y soporte técnico posventa.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="canvas-cell c-resources">
+                            <div class="canvas-cell-title">
+                                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                                Recursos Clave
+                            </div>
+                            <ul>
+                                <li>Algoritmo de previsión híbrido registrado (reservas PMS + cubiertos F&B + clima).</li>
+                                <li>Equipo técnico especializado en data engineering con experiencia sectorial en hospitality.</li>
+                                <li>Infraestructura cloud redundante (Postgres/BigQuery en Railway).</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="canvas-cell c-propositions">
+                            <div class="canvas-cell-title">
+                                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5a2 2 0 10-2 2h2zm0 0h4m-4 0H8m12 3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                Propuesta Valor
+                            </div>
+                            <ul>
+                                <li><strong>SaaS B2B unificador:</strong> Integra PMS, TPV y CRM eliminando la necesidad de un equipo de TI dedicado.</li>
+                                <li><strong>Previsión F&B:</strong> Reducción garantizada de hasta el 12% en mermas alimentarias mediante compras sugeridas automáticas.</li>
+                                <li><strong>BI Conversacional:</strong> Consultas operativas directas al instante para el comité de dirección.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="canvas-cell c-relationships">
+                            <div class="canvas-cell-title">
+                                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                                Relación Clientes
+                            </div>
+                            <ul>
+                                <li>Setup inicial garantizado en 30 días con acompañamiento técnico directo.</li>
+                                <li>Soporte SLA de alto nivel (disponibilidad 99.9% de los datos analíticos).</li>
+                                <li>Account Manager dedicado y auditorías de retorno de inversión trimestrales.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="canvas-cell c-channels">
+                            <div class="canvas-cell-title">
+                                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+                                Canales
+                            </div>
+                            <ul>
+                                <li>Venta consultiva directa mediante equipo comercial corporativo.</li>
+                                <li>Marketplaces oficiales y homologados de PMS (Mews Store, Opera Cloud Exchange).</li>
+                                <li>Presencia en congresos de innovación turística y tecnológica (HIP, FITUR).</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="canvas-cell c-segments">
+                            <div class="canvas-cell-title">
+                                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                                Segmento Clientes
+                            </div>
+                            <ul>
+                                <li>Cadenas hoteleras medianas e independientes de propiedad familiar (3 a 10 hoteles).</li>
+                                <li>Hoteles independientes con peso estratégico de F&B y gastronomía de alto nivel.</li>
+                                <li>Direcciones Generales y de Operaciones que requieren optimización ágil de EBITDA.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="canvas-cell c-costs">
+                            <div class="canvas-cell-title">
+                                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+                                Estructura de Costes
+                            </div>
+                            <ul>
+                                <li>Costes de personal técnico: Ingenieros de datos, Data Scientists y Soporte.</li>
+                                <li>Computación y almacenamiento cloud (ingesta y cálculo de modelos de lenguaje).</li>
+                                <li>Costes de marketing B2B, comercialización directa y presencia en ferias.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="canvas-cell c-revenues">
+                            <div class="canvas-cell-title">
+                                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                Fuentes de Ingresos
+                            </div>
+                            <ul>
+                                <li><strong>Setup fee de integración:</strong> Cobro único de 18.000 € por propiedad integrada.</li>
+                                <li><strong>Suscripción SaaS recurrente:</strong> 1.100 € al mes por hotel activo.</li>
+                                <li><strong>Consultoría de datos ad-hoc:</strong> Proyectos especiales de optimización.</li>
+                            </ul>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <!-- DIAGNÓSTICO DAFO -->
+                <div class="panel">
+                    <div class="panel-title">
+                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                        Matriz DAFO - Análisis Estratégico
+                    </div>
+                    <div class="dafo-grid">
+                        <div class="dafo-box dafo-f">
+                            <div class="dafo-title">Fortalezas</div>
+                            <ul>
+                                <li>Integración técnica ágil en 30 días sin interrumpir la operativa diaria del hotel.</li>
+                                <li>Foco en la gestión de compras y mermas de F&B, área habitualmente descuidada por el software convencional.</li>
+                                <li>Experiencia directa en dirección de F&B y gestión en hoteles premium de cinco estrellas, asegurando un encaje real.</li>
+                            </ul>
+                        </div>
+                        <div class="dafo-box dafo-d">
+                            <div class="dafo-title">Debilidades</div>
+                            <ul>
+                                <li>Marca nueva en fase de lanzamiento con menor notoriedad inicial frente a gigantes heredados del sector.</li>
+                                <li>Dependencia externa de la accesibilidad de APIs públicas/privadas de PMS heredados cerrados.</li>
+                                <li>Necesidad de desarrollo inicial de conectores ETL adaptados según el software específico del cliente.</li>
+                            </ul>
+                        </div>
+                        <div class="dafo-box dafo-o">
+                            <div class="dafo-title">Oportunidades</div>
+                            <ul>
+                                <li>Presión inflacionista severa en costes de compras que obliga a los hoteles a optimizar sus márgenes.</li>
+                                <li>Aparición de normativas y leyes estatales contra el desperdicio alimentario.</li>
+                                <li>Bajo nivel de digitalización real y falta de analistas de datos en cadenas hoteleras medianas.</li>
+                            </ul>
+                        </div>
+                        <div class="dafo-box dafo-a">
+                            <div class="dafo-title">Amenazas</div>
+                            <ul>
+                                <li>Estrategias defensivas de PMS tradicionales cobrando tarifas elevadas por el acceso a sus APIs.</li>
+                                <li>Resistencia al cambio y falta de adopción de cuadrantes algorítmicos por el personal operativo de sala/cocina.</li>
+                                <li>Lanzamiento de paneles analíticos genéricos básicos por consultores de BI locales.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <!-- RIGHT COLUMN -->
+            <div class="right-column">
+                
+                <!-- MÉTRICAS INVERSORES -->
+                <div class="panel">
+                    <div class="panel-title">
+                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        Métricas Económicas (Plan Financiero)
+                    </div>
+                    <div class="kpi-grid">
+                        <div class="kpi-card">
+                            <div class="kpi-value">80.000 €</div>
+                            <div class="kpi-label">Financiación</div>
+                            <div class="kpi-desc">Bootstrapping + Préstamos ENISA / ICO</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-value">14 meses</div>
+                            <div class="kpi-label">Payback Period</div>
+                            <div class="kpi-desc">Retorno total de la inversión en Q2 del Año 2</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-value">+370%</div>
+                            <div class="kpi-label">ROI a 3 años</div>
+                            <div class="kpi-desc">Flujo de caja acumulado de +296k €</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-value">1.100 €</div>
+                            <div class="kpi-label">MRR / Licencia</div>
+                            <div class="kpi-desc">Suscripción recurrente mensual por hotel</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-value">8,2x</div>
+                            <div class="kpi-label">Ratio LTV / CAC</div>
+                            <div class="kpi-desc">LTV medio: 57,6k € | CAC: 7k €</div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-value">Q1 Año 2</div>
+                            <div class="kpi-label">Pto. Equilibrio</div>
+                            <div class="kpi-desc">Break-even con 3,5 clientes activos</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CRONOGRAMA DE ONBOARDING -->
+                <div class="panel">
+                    <div class="panel-title">
+                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        Roadmap de Integración en Cliente (30 Días)
+                    </div>
+                    <div class="timeline">
+                        <div class="timeline-step">
+                            <div class="step-num">Semana 1 <span>Conectividad</span></div>
+                            <div class="step-desc">Auditoría técnica de APIs en PMS (Mews/Opera) y TPV del hotel. Mapeo estructural de datos.</div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="step-num">Semanas 2-3 <span>Desarrollo</span></div>
+                            <div class="step-desc">Configuración de pipelines ETL y Data Lake en Railway. Ingesta del histórico y depuración.</div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="step-num">Semana 4 <span>Go-Live</span></div>
+                            <div class="step-desc">Capacitación práctica del personal del hotel (Cocina, Compras y Dirección). Activación final.</div>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="step-num">Trimestral <span>Optimización</span></div>
+                            <div class="step-desc">Calibración fina del algoritmo, análisis de ahorro de mermas y auditoría de impacto en EBITDA.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ROI HOTELERO REAL -->
+                <div class="panel">
+                    <div class="panel-title">
+                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 002 2h2a2 2 0 002-2"></path></svg>
+                        Efecto Financiero en Hotel Promedio
+                    </div>
+                    <div style="font-size: 8px; color: var(--text-light); line-height: 1.45;">
+                        <p style="margin-bottom: 5px; text-align: justify;">Caso práctico real para un hotel de 40 habitaciones con un coste anual en compras de restauración (F&B) de 220.000 €:</p>
+                        <ul style="padding-left: 2px; margin-bottom: 5px; list-style: none;">
+                            <li style="margin-bottom: 4px; position: relative; padding-left: 8px; text-align: justify;">
+                                <span style="color: var(--primary); position: absolute; left: 0;">•</span>
+                                <strong>Ahorro anual F&B:</strong> 17.600 € al evitar un 8% de merma de materia prima gracias a la compra sugerida por IA.
+                            </li>
+                            <li style="margin-bottom: 4px; position: relative; padding-left: 8px; text-align: justify;">
+                                <span style="color: var(--primary); position: absolute; left: 0;">•</span>
+                                <strong>Eficiencia en personal:</strong> ~8.000 € anuales mediante el ajuste optimizado de cuadrantes en picos de demanda.
+                            </li>
+                            <li style="position: relative; padding-left: 8px; text-align: justify;">
+                                <span style="color: var(--primary); position: absolute; left: 0;">•</span>
+                                <strong>Retorno neto:</strong> Margen neto anual de **12.400 €** (descontando el coste de la licencia). Retorno de la inversión inicial en menos de 18 meses.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- FOOTER / CALL TO ACTION -->
+        <div class="footer-action">
+            <div class="footer-text">
+                <h3>¿Quieres simular el retorno financiero detallado de tu cadena?</h3>
+                <p>FARO conecta tu PMS y TPV para transformar datos operativos en EBITDA real desde el primer mes.</p>
+            </div>
+            <button class="print-control" onclick="window.print()">
+                <svg width="12" height="12" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
+                    <path d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2H5zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4V3zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2H5zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1z"/>
+                </svg>
+                Imprimir One-Pager A4
+            </button>
+        </div>
+
+    </div>
+
+</body>
+</html>
